@@ -28,9 +28,16 @@
                 <div><strong>Publisher:</strong> {{ b.publisher }}</div>
                 <div><strong>Published:</strong> {{ b.publishedDate | date: 'MM/dd/yyyy' }}</div>
                 <p [innerHTML]="b.description"></p>
-                <button mat-flat-button color="primary" aria-label="Want to Read" (click)="addBookToReadingList(b)" [disabled]="b.isAdded">
-                  Want to Read
-                </button>
+                <button
+                    data-testing="add-book-to-readinglist"
+                    mat-flat-button
+                    color="primary"
+                    (click)="addBookToReadingList(b)"
+                    [disabled]="b.isAdded"
+                    [attr.aria-label]="'Want to Read'"
+                  >
+                    {{b.finished ? 'Finished' : 'Want to Read'}}
+                  </button>
               </div>
             </div>
           </div>

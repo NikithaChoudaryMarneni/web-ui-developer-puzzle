@@ -8,9 +8,25 @@
       <div class="reading-list-item--details--author">
         {{ b.authors.join(',') }}
       </div>
+      <div *ngIf="b.finished">
+        <div class="finish"><strong>Finished</strong></div>
+        <span class="finish"><strong>Finished Date: </strong>{{ b.finishedDate | date: 'MM/dd/yyyy' }}</span>
+      </div>
     </div>
-    <div>
+    <div class="icon-container">
       <button
+        data-testing="finish-from-readingList"
+        mat-icon-button
+        color="warn"
+        [attr.aria-label]="'Finished ' + b.title + ' from reading list'"
+        (click)="updateFromReadingList(b)"
+        data-testing="update-reading-list"
+        [disabled]="b.finished"
+      >
+        <mat-icon>done</mat-icon>
+      </button>
+      <button
+        data-testing="remove-from-readingList"
         mat-icon-button
         color="warn"
         [attr.aria-label]="'Remove ' + b.title + ' from reading list'"

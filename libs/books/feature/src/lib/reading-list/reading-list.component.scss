@@ -9,7 +9,7 @@
 }
 
 .reading-list-item {
-  display: flex;
+  display: flex !important;
   justify-content: center;
   margin-bottom: $spacing-xs;
   width: 100%;
@@ -44,4 +44,20 @@
   font-weight: 100;
   font-size: 1rem;
   color: $gray60;
+}
+
+.icon-container {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-between;
+}
+
+$green: #00FF00; // Define your green color variable
+
+.finish {
+  color: $green;
+}
+
+.finishDate {
+  color: $pink-very-dark;
 }
