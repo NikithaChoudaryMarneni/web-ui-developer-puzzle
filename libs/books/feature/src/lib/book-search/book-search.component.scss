@@ -70,3 +70,40 @@ form {
   font-size: 1.5rem;
   color: $gray40;
 }
+
+.search-example {
+  padding: 0rem;
+  font-size: 1.5rem;
+  color: $pink-dark;
+}
+
+/* Add this SCSS to your component's style file */
+
+.book--content {
+  display: flex;
+
+  &--cover {
+    margin-right: 10px; // Adjust the margin as needed
+  }
+
+  &--info {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+
+    button {
+      margin-top: 10px; // Adjust the margin as needed
+    }
+  }
+}
+.container {
+  // Your container styles
+
+  .book--content--cover {
+    .book-cover-img {
+      max-width: 100%;
+      height: auto;
+      max-height: 200px; // Adjust as needed
+    }
+  }
+}
