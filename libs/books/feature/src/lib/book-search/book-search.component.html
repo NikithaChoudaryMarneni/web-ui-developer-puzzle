@@ -1,5 +1,5 @@
 <div class="container">
-  <form [formGroup]="searchForm" (submit)="searchBooks()">
+  <form [formGroup]="searchForm">
     <div class="row">
       <div class="col">
         <mat-form-field floatLabel="never">
@@ -11,6 +11,7 @@
       </div>
     </div>
   </form>
+
   <div class="row">
     <div class="col" *ngIf="searchTerm; else empty">
       <div class="book-grid">
@@ -28,7 +29,7 @@
                 <div><strong>Publisher:</strong> {{ b.publisher }}</div>
                 <div><strong>Published:</strong> {{ b.publishedDate | date: 'MM/dd/yyyy' }}</div>
                 <p [innerHTML]="b.description"></p>
-                <button mat-flat-button color="primary" aria-label="Want to Read" (click)="addBookToReadingList(b)" [disabled]="b.isAdded">
+                <button data-testing="add-book-to-readinglist" mat-flat-button color="primary" aria-label="want to read" (click)="addBookToReadingList(b)" [disabled]="b.isAdded">
                   Want to Read
                 </button>
               </div>
