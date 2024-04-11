@@ -11,4 +11,11 @@ describe('When: I use the reading list feature', () => {
       'My Reading List'
     );
   });
+
+  it('When: we have one element in reading list', () => {
+    cy.get('[data-testing="toggle-reading-list"]').click();
+    cy.get('[data-testing="remove-reading-list-button"]').click();
+    cy.get('.mat-button-base').contains('Undo').click();
+  });
+  
 });
