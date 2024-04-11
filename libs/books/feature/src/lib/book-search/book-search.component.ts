@@ -11,6 +11,7 @@ import { Book } from '@tmo/shared/models';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Observable, Subject } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { distinctUntilChanged, debounceTime, takeUntil } from 'rxjs/operators';
 @Component({
   selector: 'tmo-book-search',
   templateUrl: './book-search.component.html',
@@ -29,6 +30,13 @@ export class BookSearchComponent implements OnDestroy {
       private readonly fb: FormBuilder,
       private snackBar: MatSnackBar
     ) {
+      this.searchForm.controls.term.valueChanges.pipe(
+        distinctUntilChanged(), 
+        debounceTime(500),
+        takeUntil(this.unsubscribe$)
+      ).subscribe(() => {
+        this.searchBooks();
+      });
     }
 
   ngOnDestroy(): void {
